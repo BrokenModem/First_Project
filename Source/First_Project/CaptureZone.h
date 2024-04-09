@@ -23,6 +23,9 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	UBoxComponent* CollisionComponent;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float CaptureTime;
+
 	/** called when something enters the sphere component */
 	UFUNCTION()
 	void OnOverlapBegin(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
@@ -30,6 +33,12 @@ protected:
 	/** called when something leaves the sphere component */
 	UFUNCTION()
 	void OnOverlapEnd(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
+	float timeSinceTick;
+
+	float percentage;
+
+	bool capturing;
 
 public:	
 	// Called every frame

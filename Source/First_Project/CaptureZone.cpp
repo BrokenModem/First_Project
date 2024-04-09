@@ -46,5 +46,20 @@ void ACaptureZone::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if (capturing)
+	{
+		timeSinceTick += DeltaTime;
+		
+		percentage = FMath::Clamp(timeSinceTick / CaptureTime * 100.0f, 0.0f, 100.0f);
+
+		GEngine->AddOnScreenDebugMessage(-1, .5f, FColor::Yellow, FString::Printf(TEXT("Float value: %f"), percentage));
+
+		if (percentage >= 100.0f)
+		{
+			capturing = false;
+			timeSinceTick = 0;
+		}
+	}
+
 }
 
