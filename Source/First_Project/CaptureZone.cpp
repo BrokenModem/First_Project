@@ -32,23 +32,12 @@ void ACaptureZone::BeginPlay()
 
 void ACaptureZone::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	capturing = true;
 
-
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(-1, .5f, FColor::Yellow, TEXT("Colliding"));
-	}
 }
 
 void ACaptureZone::OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
-	capturing = false;
 
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(-1, .5f, FColor::Yellow, TEXT("Not Colliding"));
-	}
 }
 
 // Called every frame
@@ -92,3 +81,7 @@ void ACaptureZone::Tick(float DeltaTime)
 
 }
 
+void ACaptureZone::Use_Implementation()
+{
+	capturing = true;
+}

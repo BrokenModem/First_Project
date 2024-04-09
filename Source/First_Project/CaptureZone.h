@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/BoxComponent.h"
+#include "UseableInterface.h"
 #include "CaptureZone.generated.h"
 
 UENUM(BlueprintType)
@@ -14,7 +15,7 @@ enum class EFlagState : uint8
 };
 
 UCLASS()
-class FIRST_PROJECT_API ACaptureZone : public AActor
+class FIRST_PROJECT_API ACaptureZone : public AActor, public IUseableInterface
 {
 	GENERATED_BODY()
 	
@@ -57,5 +58,7 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	virtual void Use_Implementation() override;
 
 };
