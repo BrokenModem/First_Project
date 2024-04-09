@@ -7,6 +7,12 @@
 #include "Components/BoxComponent.h"
 #include "CaptureZone.generated.h"
 
+UENUM(BlueprintType)
+enum class EFlagState : uint8
+{
+	UP,DOWN,
+};
+
 UCLASS()
 class FIRST_PROJECT_API ACaptureZone : public AActor
 {
@@ -22,6 +28,12 @@ protected:
 
 	UPROPERTY(VisibleAnywhere)
 	UBoxComponent* CollisionComponent;
+
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* PoleMesh;
+
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* FlagMesh;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float CaptureTime;
@@ -39,6 +51,8 @@ protected:
 	float percentage;
 
 	bool capturing;
+
+	EFlagState flagState;
 
 public:	
 	// Called every frame
