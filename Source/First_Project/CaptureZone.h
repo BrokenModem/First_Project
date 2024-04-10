@@ -38,6 +38,9 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float CaptureTime;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float percentage;
 
 	/** called when something enters the sphere component */
 	UFUNCTION()
@@ -48,8 +51,6 @@ protected:
 	void OnOverlapEnd(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
 	float timeSinceTick;
-
-	float percentage;
 
 	bool capturing;
 
